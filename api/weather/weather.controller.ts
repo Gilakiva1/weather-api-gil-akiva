@@ -33,8 +33,7 @@ export const deleteFavorite = async (req: Request, res: Response) => {
 };
 
 export const addWeather = async (req: Request, res: Response) => {
-  const city = req.body.city as CityDataType;
-  console.log({ city }, "--------------------");
+  const city = req.body.cityData as CityDataType;
   try {
     const response = await WeatherService.addWeather(city);
     res.status(200).send("Favorite deleted successfully");

@@ -31,8 +31,7 @@ const getCityData = async (key: string) => {
   try {
     const cityFromDB = await findWeather(key);
     if (cityFromDB) {
-      console.log("here");
-      return cityFromDB;
+      return [cityFromDB];
     }
 
     const response = await axiosServices.get(
@@ -94,11 +93,13 @@ const getFavorite = async () => {
 };
 
 const addWeather = async (data: CityDataType) => {
+  await syncModels();
+
   try {
     const { key, ...weatherData } = data;
-    const createdWeather = await CityData.create({
-      key,
-      ...weatherData,
+    const [createdWeather] = await CityData.findOrCreate({
+      where: { key },
+      defaults: weatherData,
     });
 
     console.log("Weather data added:", createdWeather.toJSON());

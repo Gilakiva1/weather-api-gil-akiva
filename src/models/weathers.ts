@@ -2,6 +2,14 @@ import { DataTypes } from "sequelize";
 import sequelize from "../service/sqlService";
 
 const CityData = sequelize.define("weathers", {
+  key: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   LocalObservationDateTime: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -39,6 +47,7 @@ export default CityData;
 
 export interface CityDataType {
   key: string;
+  city: string;
   LocalObservationDateTime: string;
   EpochTime: number;
   WeatherText: string;
