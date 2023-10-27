@@ -22,7 +22,7 @@ const getCities = async (query: string) => {
     );
     return response.data;
   } catch (err) {
-    // console.error(err);
+    console.error(err);
     throw err;
   }
 };
@@ -39,7 +39,7 @@ const getCityData = async (key: string) => {
     );
     return response.data;
   } catch (err) {
-    // console.error(err);
+    console.error(err);
     throw err;
   }
 };
@@ -52,12 +52,7 @@ const deleteFavorite = async (key: string) => {
         key,
       },
     });
-
-    if (deletedRows === 1) {
-      return true;
-    } else {
-      return false;
-    }
+    return deletedRows === 1;
   } catch (error) {
     return false;
   }
