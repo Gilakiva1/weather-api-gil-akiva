@@ -6,7 +6,7 @@ import CityData, { CityDataType } from "../../src/models/weathers";
 
 dotenv.config();
 
-const BASE_URL = "http://dataservice.accuweather.com/";
+const BASE_URL = process.env.WEATHER_API;
 const API_KEY = process.env.WEATHER_TOKEN;
 
 const axiosServices = axios.create({ baseURL: BASE_URL });
